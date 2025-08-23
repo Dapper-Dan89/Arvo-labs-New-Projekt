@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
-import { useTheme, useLanguage } from '../contexts/AppContext';
+import { Menu, X, Globe } from 'lucide-react';
+import { useLanguage } from '../contexts/AppContext';
 import { translations } from '../data/translations';
+import ThemeToggle from "../components/ThemeToggle";
+
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
   const location = useLocation();
   const t = translations[language];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -78,17 +76,8 @@ const Header: React.FC = () => {
               <span className="uppercase">{language}</span>
             </button>
 
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-arvo-light/50 dark:bg-arvo-dark/50 text-arvo-dark dark:text-white hover:text-arvo-accent transition-all duration-300"
-            >
-              {theme === 'light' ? (
-                <Moon className="w-5 h-5" />
-              ) : (
-                <Sun className="w-5 h-5" />
-              )}
-            </button>
+            {/* Theme Toggle (neu) */}
+            <ThemeToggle />
 
             {/* Mobile Menu Toggle */}
             <button

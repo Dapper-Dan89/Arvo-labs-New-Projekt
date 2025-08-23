@@ -79,17 +79,18 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div 
-        onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer group animate-bounce"
-      >
-        <div className="flex flex-col items-center space-y-2 text-arvo-text-secondary hover:text-white transition-colors duration-300">
-          <span className="text-sm font-medium uppercase tracking-wider">
-            {t.hero.scrollToExplore}
-          </span>
-          <ChevronDown className="w-6 h-6 group-hover:translate-y-1 transition-transform duration-300" />
-        </div>
-      </div>
+<div
+  onClick={scrollToNext}
+  className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer group"
+>
+  <div className="flex flex-col items-center gap-2 text-arvo-text-secondary hover:text-white transition-colors duration-300">
+    <span className="text-sm font-medium uppercase tracking-wider text-center">
+      {t.hero.scrollToExplore}
+    </span>
+    <ChevronDown className="w-6 h-6 group-hover:translate-y-1 transition-transform duration-300" />
+  </div>
+</div>
+
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-arvo-dark/20 pointer-events-none"></div>
