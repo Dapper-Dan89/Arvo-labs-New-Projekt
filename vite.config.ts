@@ -6,6 +6,7 @@ import sourceIdentifierPlugin from 'vite-plugin-source-info';
 const isProd = process.env.BUILD_MODE === 'prod';
 
 export default defineConfig({
+  base: '/Arvo-labs-New-Projekt/',   // <- wichtig für GitHub Pages
   plugins: [
     react(),
     sourceIdentifierPlugin({
@@ -14,6 +15,9 @@ export default defineConfig({
       includeProps: true,
     }),
   ],
+  build: {
+    outDir: 'dist',
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
