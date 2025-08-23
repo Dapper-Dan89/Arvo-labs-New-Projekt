@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "rmdir /s /q node_modules\\.vite-temp 2>nul & tsc -b && vite build",
-    "build:prod": "rmdir /s /q node_modules\\.vite-temp 2>nul & tsc -b & set \"BUILD_MODE=prod\" && vite build",
+    "build": "rimraf dist && tsc -b && vite build",
+    "build:prod": "cross-env BUILD_MODE=prod rimraf dist && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
